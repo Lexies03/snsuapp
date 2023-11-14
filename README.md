@@ -1,0 +1,2 @@
+# snsuapp
+SNSU App
