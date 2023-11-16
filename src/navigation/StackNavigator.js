@@ -1,8 +1,9 @@
-  import * as React from 'react';
+import * as React from 'react';
+import {View, Text, Button} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 //icons
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -11,14 +12,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import LoginScreen from '../screens/LoginScreen';
 import HomeScreen from '../screens/HomeScreen';
 
-
-
-
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
+  const Drawer = createDrawerNavigator();
 
-  function BottomTabs(){
+  function BottomTabs() {
     return (
       <Tab.Navigator>
         <Tab.Screen
@@ -40,7 +39,7 @@ const StackNavigator = () => {
 
         <Tab.Screen
           name="Enrollment"
-          component={HomeScreen}
+          component={LoginScreen}
           options={{
             tabBarLabel: 'Enrollment',
             tabBarLabelStyle: {color: '#008E97', fontSize: 13},
@@ -109,8 +108,17 @@ const StackNavigator = () => {
         />
       </Tab.Navigator>
     );
-  };
-  
+  }
+
+  function MyDrawer() {
+    return (
+      <Drawer.Navigator>
+        <Drawer.Screen name="SNSU Portal" component={BottomTabs} />
+        <Drawer.Screen name="Article" component={LoginScreen} />
+      </Drawer.Navigator>
+    );
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -122,12 +130,23 @@ const StackNavigator = () => {
 
         <Stack.Screen
           name="Main"
+          component={MyDrawer}
+          options={{headerShown: false}}
+        />
+
+
+        {/* <Stack.Screen
+          name="Mains"
           component={BottomTabs}
           options={{headerShown: false}}
         />
 
+        <Stack.Screen
+          name="Mains"
+          component={MyDrawer}
+          options={{headerShown: false}}
+        /> */}
       </Stack.Navigator>
-
     </NavigationContainer>
   );
 };

@@ -155,18 +155,17 @@ const HomeScreen = () => {
     },
     view_announcement: {
       // display:"flex",
-      // alignItems:"center",
     },
     text_announcement: {
-      color: 'white',
-      backgroundColor: 'gray',
+      color: 'black',
+      backgroundColor: 'wheat',
+      borderColor: 'red',
+      borderWidth: 1,
       fontSize: 20,
-      padding: 20,
-      marginTop: 10,
+      padding: 10,
+      margin: 10,
       textAlign: 'center',
-      // borderColor: 'green',
-      // borderWidth: 1,
-      borderRadius: 20,
+      borderRadius: 10,
     },
   });
 
